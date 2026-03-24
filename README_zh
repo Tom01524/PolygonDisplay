@@ -1,0 +1,19 @@
+这个项需要glfw,opencv,eigen, glm
+
+glfw   主窗口
+glm    基本类型float2 float3 int3 double3的基本运算 3D运算
+opencv 读取图片的rgb矩阵
+eigen  解一方程   
+
+实现 三角面,圆面,圆锥,椭球_贴图,矩形面_贴图,一元二次方程的复域二曲面,一元三次方程的复域二曲面(还未使用牛顿迭代解决漏解),双三次贝塞尔四边曲面(2D三角面扫屏,3D层级轴对齐包围盒),双二次三边贝塞尔曲面.
+
+屏幕为lt(0,0,0) rt(1600,0,0) rb(1600,1000,0) lb(0,1000,0) 视点 eye(800,500,-1000).
+关于视锥体剔除 
+通过lt rt eye三点的三角面做剔除,通过到视点的两条边,向量叉乘
+	r[0] = a[1]*b[2] - a[2]*b[1];
+	r[1] = a[2]*b[0] - a[0]*b[2];
+	r[2] = a[0]*b[1] - a[1]*b[0];
+得到面法线.通过法线和共面点,得到共面方程ax+by+cz+d=0的abcd(abc为法线dx dy dz).将几何对象的主包围盒8点对此三角面求正垂距离-(ax+by+cz+d),根据正负号,判断出所有包围盒顶点在视锥的上面.
+还未实现
+
+If you don't understand Chinese, you can translate this instrction to your own language.
